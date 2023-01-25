@@ -3,9 +3,8 @@
 #### Download RNAfusion package
 
 ```
-[j_wang@n12 ~]$ cd /mnt/beegfs/scratch/j_wang/
-[j_wang@n12 j_wang]$ mkdir -p lib/nfcore/rnafusion/
-[j_wang@n12 j_wang]$ cd lib/nfcore/rnafusion/
+[j_wang@n12 ~]$ mkdir -p lib/nfcore/rnafusion/
+[j_wang@n12 ~]$ cd lib/nfcore/rnafusion/
 [j_wang@n12 rnafusion]$ wget https://github.com/nf-core/rnafusion/archive/refs/tags/2.1.0.tar.gz
 [j_wang@n12 rnafusion]$ tar -xf 2.1.0.tar.gz
 [j_wang@n12 rnafusion]$ mv rnafusion-2.1.0 2.1.0
@@ -126,8 +125,9 @@ export NXF_TEMP="/mnt/beegfs/scratch/${USER}/.tmp_dir"
  - cosmic_passwd   = your password
 3. modify [nextflow.config]
 ```
-[j_wang@n12 rnafusion]$ cp nextflow.config nextflow.config.bak
-[j_wang@n12 rnafusion]$ cp /home/j_wang@intra.igr.fr/RNA_Pipelines/RNAfusion/nextflow.config nextflow.config
+[j_wang@n12 rnafusion]$ cd ..
+[j_wang@n12 2.1.0]$ mv nextflow.config nextflow.config.bak
+[j_wang@n12 2.1.0]$ cp /home/j_wang@intra.igr.fr/RNA_Pipelines/RNAfusion/nextflow.config nextflow.config
 ```
 
 4. start the pipeline
@@ -137,7 +137,7 @@ module load java/17.0.4.1
 module load singularity/3.6.3
 module load nextflow/21.10.6
 
-nextflow run /mnt/beegfs/scratch/j_wang/lib/nfcore/rnafusion/2.1.0/main.nf --starindex --build_references --genome GRCh38 -profile singularity --outdir $PWD -resume 
+nextflow run /home/j_wang@intra.igr.fr/lib/nfcore/rnafusion/2.1.0/main.nf --starindex --build_references --genome GRCh38 -profile singularity --outdir $PWD -resume 
 ```
 
 #### Start RNAfusion pipeline 
@@ -147,5 +147,5 @@ module load java/17.0.4.1
 module load singularity/3.6.3
 module load nextflow/21.10.6
 
-nextflow run /mnt/beegfs/scratch/j_wang/lib/nfcore/rnafusion/2.1.0/main.nf --starindex --genome GRCh38 -profile singularity --outdir $PWD -resume 
+nextflow run /home/j_wang@intra.igr.fr/lib/nfcore/rnafusion/2.1.0/main.nf --starindex --genome GRCh38 -profile singularity --outdir $PWD -resume --arriba --star_fusion
 ```
