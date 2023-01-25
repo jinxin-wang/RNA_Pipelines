@@ -11,20 +11,6 @@
 [j_wang@n12 rnafusion]$ mv rnafusion-2.1.0 2.1.0
 ```
 
-
-#### Build Refereces 
-1. create an account in the [site](https://cancer.sanger.ac.uk/cosmic)
-2. put your username and password in the [nextflow.config](https://github.com/jinxin-wang/INSERM_U981_Pipelines/blob/main/RNAfusion/nextflow.config)
- - cosmic_username = your username
- - cosmic_passwd   = your password
-
-#### Modify [nextflow.config](https://github.com/jinxin-wang/RNA_Pipelines/blob/main/RNAfusion/nextflow.config)
-
-```
-[j_wang@n12 rnafusion]$ emacs nextflow.config
-
-```
-
 #### Modify [base.conf](https://github.com/jinxin-wang/INSERM_U981_Pipelines/blob/main/RNAfusion/base.config)
 
 ```
@@ -134,9 +120,19 @@ export NXF_TEMP="/mnt/beegfs/scratch/j_wang/.tmp_dir"
 
 #### Build the reference
 
+1. create an account in the [site](https://cancer.sanger.ac.uk/cosmic)
+2. put your username and password in the [nextflow.config](https://github.com/jinxin-wang/INSERM_U981_Pipelines/blob/main/RNAfusion/nextflow.config)
+ - cosmic_username = your username
+ - cosmic_passwd   = your password
+3. modify [nextflow.config]
 ```
-#!/bin/bash
+[j_wang@n12 rnafusion]$ cp nextflow.config nextflow.config.bak
+[j_wang@n12 rnafusion]$ cp /home/j_wang@intra.igr.fr/RNA_Pipelines/RNAfusion/nextflow.config nextflow.config
+```
 
+4. start the pipeline
+
+```
 module load java/17.0.4.1
 module load singularity/3.6.3
 module load nextflow/21.10.6
@@ -144,12 +140,9 @@ module load nextflow/21.10.6
 nextflow run /mnt/beegfs/scratch/j_wang/lib/nfcore/rnafusion/2.1.0/main.nf --starindex --build_references --genome GRCh38 -profile singularity --outdir $PWD -resume 
 ```
 
-#### Start the pipeline 
+#### Start RNAfusion pipeline 
 
 ```
-cat rnafusion.sh
-#!/bin/bash
-
 module load java/17.0.4.1
 module load singularity/3.6.3
 module load nextflow/21.10.6
