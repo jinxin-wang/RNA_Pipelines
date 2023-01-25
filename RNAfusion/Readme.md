@@ -31,6 +31,7 @@
 [j_wang@n12 rnafusion]$ cd 2.1.0/conf
 [j_wang@n12 conf]$ cp base.conf base.conf.bak
 [j_wang@n12 conf]$ emacs base.conf
+
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     nf-core/rnafusion Nextflow base config file
@@ -43,24 +44,47 @@
 
 process {
 
+    cpus   = { check_max( 16, 'cpus'   ) }
+    memory = { check_max( 128.GB, 'memory' ) }
+    time   = { check_max( 168.h, 'time'   ) }
+    queue = 'longq'
+
+    errorStrategy = { task.exitStatus in [143,137,104,134,139] ? 'retry' : 'finish' }
+    maxRetries    = 1
+    maxErrors     = '-1'
+
     withLabel:process_low {
-        time  = { check_max( 6.h, 'time') }
-        queue = 'shortq'	
+        cpus   = { check_max( 8, 'cpus'   ) }
+    	memory = { check_max( 32.GB, 'memory' ) }
+        time   = { check_max( 6.h, 'time') }
+	queue = 'shortq'
     }
     withLabel:process_medium {
-        time  = { check_max( 24.h, 'time') }
-        queue = 'mediumq'
+        cpus   = { check_max( 16, 'cpus'   ) }
+	memory = { check_max( 64.GB, 'memory' ) }
+        time   = { check_max( 24.h, 'time') }
+        queue = 'mediumq'	
+    }
+    withLabel:process_high {
+        cpus   = { check_max( 16, 'cpus'   ) }
+	memory = { check_max( 128.GB, 'memory' ) }
+        time   = { check_max( 168.h, 'time') }
+        queue = 'longq'	
     }
     withLabel:process_long {
-        time  = { check_max( 168.h, 'time') }
-        queue = 'longq'
+        cpus   = { check_max( 16, 'cpus'   ) }
+	memory = { check_max( 128.GB, 'memory' ) }
+        time   = { check_max( 168.h, 'time') }
+	queue = 'longq'
     }
     withLabel:process_verylong {
+        cpus   = { check_max( 16, 'cpus'   ) }
+	memory = { check_max( 128.GB, 'memory' ) }
         time   = { check_max( 1440.h, 'time') }
-        queue  = 'verylongq'
+	queue = 'verylongq'
     }
-
 }
+
 ```
 
 #### Set Bash Variable and Export to Global Shell Environment
