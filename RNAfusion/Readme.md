@@ -147,5 +147,5 @@ module load java/17.0.4.1
 module load singularity/3.6.3
 module load nextflow/21.10.6
 
-nextflow run /home/j_wang@intra.igr.fr/lib/nfcore/rnafusion/2.1.0/main.nf --starindex --genome GRCh38 -profile singularity --outdir $PWD -resume --arriba --star_fusion
+nextflow run /home/j_wang@intra.igr.fr/lib/nfcore/rnafusion/2.1.0/main.nf --starindex --genome GRCh38 -profile singularity --outdir $PWD -resume
 ```
