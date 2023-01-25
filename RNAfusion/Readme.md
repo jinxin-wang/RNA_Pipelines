@@ -114,8 +114,8 @@ if [ -z ${TEMPDIR} ]; then
 fi
 
 ## Added by `nf-core download` v2.7.2 ##
-export NXF_SINGULARITY_CACHEDIR="/mnt/beegfs/scratch/j_wang/.singularity_cache"
-export NXF_TEMP="/mnt/beegfs/scratch/j_wang/.tmp_dir"
+export NXF_SINGULARITY_CACHEDIR="/mnt/beegfs/scratch/${USER}/.singularity_cache"
+export NXF_TEMP="/mnt/beegfs/scratch/${USER}/.tmp_dir"
 ```
 
 #### Build the reference
