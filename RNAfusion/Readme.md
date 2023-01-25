@@ -132,7 +132,20 @@ export NXF_SINGULARITY_CACHEDIR="/mnt/beegfs/scratch/j_wang/.singularity_cache"
 export NXF_TEMP="/mnt/beegfs/scratch/j_wang/.tmp_dir"
 ```
 
+#### Build the reference
+
+```
+#!/bin/bash
+
+module load java/17.0.4.1
+module load singularity/3.6.3
+module load nextflow/21.10.6
+
+nextflow run /mnt/beegfs/scratch/j_wang/lib/nfcore/rnafusion/2.1.0/main.nf --starindex --build_references --genome GRCh38 -profile singularity --outdir $PWD -resume 
+```
+
 #### Start the pipeline 
+
 ```
 cat rnafusion.sh
 #!/bin/bash
