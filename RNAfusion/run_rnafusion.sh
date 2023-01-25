@@ -8,8 +8,4 @@ module load nextflow/21.10.6
 
 # nextflow run /home/j_wang@intra.igr.fr/rnafusion/main.nf --allow-setuid --starindex --build_references --all --input samplesheet.csv --outdir ./ --genome GRCh38 -profile singularity -resume
 
-<<<<<<< HEAD:RNAfusion/run_rnafusion.sh
 nextflow run /home/j_wang@intra.igr.fr/lib/nfcore/rnafusion/2.1.0/main.nf --starindex --outdir $PWD/20230113_RNAfusion --genome GRCh38 -profile singularity -resume
-=======
-nextflow run /home/j_wang@intra.igr.fr/rnafusion/main.nf --allow-setuid --starindex --input samplesheet.csv --outdir /mnt/beegfs/scratch/j_wang/Projects/01_BCC/20230110_RNAfusion --genome GRCh38 -profile singularity -resume
->>>>>>> c1f5cbb27665aee286f88cfa2c6354568358182e:RNAfusion/rnafusion.sh
