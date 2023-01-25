@@ -91,13 +91,45 @@ process {
 
 add the following lines to ~/.bashrc
 ```
+# Our main temporary directory.
+BIGR_DEFAULT_TMP="/mnt/beegfs/userdata/${USER}/tmp"
+
+# Create default tmp directory if missing
+if [ ! -d "${BIGR_DEFAULT_TMP}" ]; then
+    mkdir --parents --verbose "${BIGR_DEFAULT_TMP}";
+fi
+
+# Used in many bash / Python scripts
+if [ -z ${TMP} ]; then
+  declare -x TMP
+  TMP="${BIGR_DEFAULT_TMP}"
+  export TMP
+fi
+
+# Used in some bash / R / perl / Python scripts
+if [ -z ${TEMP} ]; then
+  declare -x TEMP
+  TEMP="${BIGR_DEFAULT_TMP}"
+  export TEMP
+fi
+
+# Used in some bash / R / perl / Python scripts
+if [ -z ${TMPDIR} ]; then
+  declare -x TMPDIR
+  TMPDIR="${BIGR_DEFAULT_TMP}"
+  export TMPDIR
+fi
+
+# Used in some bash / R / perl scripts
+if [ -z ${TEMPDIR} ]; then
+  declare -x TEMPDIR
+  TEMPDIR="${BIGR_DEFAULT_TMP}"
+  export TEMPDIR
+fi
+
 ## Added by `nf-core download` v2.7.2 ##
 export NXF_SINGULARITY_CACHEDIR="/mnt/beegfs/scratch/j_wang/.singularity_cache"
 export NXF_TEMP="/mnt/beegfs/scratch/j_wang/.tmp_dir"
-export TMPDIR="/mnt/beegfs/scratch/j_wang/.tmp_dir"
-export TEMP="/mnt/beegfs/scratch/j_wang/.tmp_dir"
-export TMP="/mnt/beegfs/scratch/j_wang/.tmp_dir"
-export TEMPDIR="/mnt/beegfs/scratch/j_wang/.tmp_dir"
 ```
 
 #### Start the pipeline 
@@ -109,5 +141,5 @@ module load java/17.0.4.1
 module load singularity/3.6.3
 module load nextflow/21.10.6
 
-nextflow run /mnt/beegfs/scratch/j_wang/lib/nfcore/rnafusion/2.1.0/main.nf --starindex --build_references --all --genome GRCh38 -profile singularity -resume
+nextflow run /mnt/beegfs/scratch/j_wang/lib/nfcore/rnafusion/2.1.0/main.nf --starindex --genome GRCh38 -profile singularity -resume
 ```
