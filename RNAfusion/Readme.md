@@ -18,7 +18,7 @@
  - cosmic_username = your username
  - cosmic_passwd   = your password
 
-#### Modify [nextflow.config](https://github.com/jinxin-wang/INSERM_U981_Pipelines/blob/main/RNAfusion/nextflow.config)
+#### Modify [nextflow.config](https://github.com/jinxin-wang/RNA_Pipelines/blob/main/RNAfusion/nextflow.config)
 
 ```
 [j_wang@n12 rnafusion]$ emacs nextflow.config
