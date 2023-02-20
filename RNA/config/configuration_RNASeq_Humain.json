@@ -1,4 +1,5 @@
 {
+    "SPECIES"              : "Humain",
     "APP_FASTQC"           : "~/.conda/envs/pipeline_GATK_2.1.4_V2/bin/fastqc",
     "APP_FASTP"            : "~/.conda/envs/pipeline_GATK_2.1.4_V2/bin/fastp",
     "APP_STAR"             : "/mnt/beegfs/software/star/2.7.2b/bin/Linux_x86_64/STAR",
@@ -9,7 +10,6 @@
     "FASTP_ADAPTERS"       : "/mnt/beegfs/userdata/i_padioleau/genome_data/adapters_for_fastp.tsv",
     "FASTQC_ADAPTERS"      : "/mnt/beegfs/userdata/i_padioleau/genome_data/adapters_for_fastqc.tsv",
     "GENOME_FASTA"         : "/mnt/beegfs/scratch/Lg_PANUNZI/Konstantin/gatk/human_g1k_v37.fasta",
-    "GENOME_2BIT"          : "/mnt/beegfs/userdata/i_padioleau/genome_data/b37_GATK/human_g1k_v37.2bit",
     "HTSEQ_GTF"            : "/mnt/beegfs/userdata/i_padioleau/genome_data/gencode_hg19/gencode.v28lift37.annotation.gtf",
     "HTSEQ_STRANDNESS"     : "--stranded=no",
     "QTLTOOL_GTF"          : "/mnt/beegfs/userdata/i_padioleau/genome_data/gencode_hg19/gencode.v28lift37.annotation.gtf",
@@ -18,5 +18,4 @@
     "STAR_INDEX"           : "/mnt/beegfs/userdata/i_padioleau/genome_data/hg19/STAR_2.7_overhang_99/",
     "START_OUTSAMMULTNMAX" : "5",
     "STAR_SJDBOVERHANG"    : "99",
-    "TARGET_INTERVAL"      : "/mnt/beegfs/userdata/i_padioleau/genome_data/agilent_SS_XT_V5/hg19/S04380219_Covered_GATK_b37.bed"
 }
